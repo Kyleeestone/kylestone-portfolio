@@ -7,7 +7,7 @@ const Footer = () => {
       {[
         { href: "https://www.facebook.com/share/15t6Eai5Rd/", icon: <FaFacebookF />, label: "Facebook" },
         { href: "mailto:kylestonehudas@gmail.com", icon: <FaEnvelope />, label: "Email" },
-        { href: "https://github.com/yourgithub", icon: <FaGithub />, label: "GitHub" },
+        { href: "https://github.com/Kyleeestone/", icon: <FaGithub />, label: "GitHub" },
       ].map((social, index) => (
         <a
           key={index}
