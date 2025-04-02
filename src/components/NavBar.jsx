@@ -27,14 +27,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="font-roboto font-bold fixed top-5 left-1/2 transform -translate-x-1/2 w-[90%] md:w-[70%] lg:w-[50%] p-3 bg-white/30 dark:bg-gray-900/50 backdrop-blur-lg shadow-lg rounded-full flex justify-between items-center z-50 transition-all">
+    <nav className={`font-roboto font-bold fixed top-5 left-1/2 transform -translate-x-1/2 w-[90%] md:w-[70%] lg:w-[50%] p-3 ${darkMode ? 'bg-gray-800' : 'bg-white'} backdrop-blur-lg shadow-lg rounded-full flex justify-between items-center z-50 transition-all duration-300`}>
 
       {/* Logo Section */}
       <div className="flex items-center">
         <img
-          src="/images/KSC logo.webp" // Update this path to your actual logo
+          src="/images/KSC logo.webp"
           alt="Kyle Cervantes Logo"
-          className="w-10 h-10 object-cover rounded-full border border-gray-300 dark:border-gray-700"
+          className={`w-10 h-10 object-cover rounded-full border ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}
         />
       </div>
 
@@ -46,13 +46,13 @@ const Navbar = () => {
             href={`#${item}`}
             className={`relative px-2 py-1 transition-all duration-300 ${
               activeSection === item
-                ? "text-emerald-700 dark:text-emerald-300 font-semibold"
-                : "text-gray-900 dark:text-white hover:text-emerald-700 dark:hover:text-emerald-300"
+                ? (darkMode ? 'text-indigo-400' : 'text-indigo-600') + ' font-semibold'
+                : (darkMode ? 'text-gray-200 hover:text-indigo-400' : 'text-gray-800 hover:text-indigo-600')
             }`}
           >
             {item}
             {activeSection === item && (
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-500 dark:bg-emerald-300 rounded-full transition-all"></span>
+              <span className={`absolute bottom-0 left-0 w-full h-0.5 ${darkMode ? 'bg-indigo-400' : 'bg-indigo-500'} rounded-full transition-all`}></span>
             )}
           </a>
         ))}
@@ -60,20 +60,18 @@ const Navbar = () => {
 
       {/* Dark Mode Toggle */}
       <button
-        className="relative w-14 h-7 flex items-center bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-full p-1 transition-all duration-300 focus:outline-none"
+        className={`relative w-14 h-7 flex items-center ${darkMode ? 'bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900' : 'bg-gradient-to-r from-gray-200 to-gray-300'} rounded-full p-1 transition-all duration-300 focus:outline-none`}
         onClick={() => setDarkMode(!darkMode)}
         aria-label="Toggle Dark Mode"
       >
         {/* Toggle Slider */}
         <div
-          className={`absolute w-6 h-6 bg-white dark:bg-yellow-400 rounded-full shadow-md transition-transform duration-300 ${
-            darkMode ? "translate-x-7" : "translate-x-0"
-          }`}
+          className={`absolute w-6 h-6 ${darkMode ? 'bg-yellow-400' : 'bg-white'} rounded-full shadow-md transition-transform duration-300 ${darkMode ? 'translate-x-7' : 'translate-x-0'}`}
         ></div>
 
         {/* Icons */}
-        <FaMoon className="absolute left-2 text-gray-600 dark:text-gray-400 text-sm" />
-        <FaSun className="absolute right-2 text-yellow-500 dark:text-gray-200 text-sm" />
+        <FaMoon className={`absolute left-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'} text-sm`} />
+        <FaSun className={`absolute right-2 ${darkMode ? 'text-gray-200' : 'text-yellow-500'} text-sm`} />
       </button>
     </nav>
   );
