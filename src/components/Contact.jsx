@@ -51,11 +51,11 @@ const Contact = () => {
 
       <div className="container mx-auto flex flex-wrap items-center justify-center">
         {/* Left Side - Avatar Image */}
-        <div className="hidden md:block w-1/3">
+        <div className="flex justify-center md:block w-full md:w-1/3 mb-6 md:mb-0">
           <motion.img
             src="/images/graduate.jpg"
             alt="Profile Avatar"
-            className="w-52 h-52 md:w-60 md:h-60 lg:w-72 lg:h-72 mx-auto rounded-full border-4 border-indigo-400 shadow-2xl"
+            className="w-40 h-40 sm:w-44 sm:h-44 md:w-60 md:h-60 lg:w-72 lg:h-72 mx-auto rounded-full border-4 border-indigo-400 shadow-2xl"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
