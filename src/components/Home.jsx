@@ -1,23 +1,63 @@
 import { motion } from "framer-motion";
-import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram, FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
 import profilePic from "/images/graduate.jpg";
+
+// Floating Icons Configuration
+const floatingIcons = [
+  { icon: <FaHtml5 className="text-orange-500" />, x: -120, y: -70, delay: 0 },
+  { icon: <FaCss3Alt className="text-blue-500" />, x: 140, y: 60, delay: 1 },
+  { icon: <FaJs className="text-yellow-500" />, x: -180, y: 180, delay: 0.5 },
+  { icon: <FaReact className="text-cyan-400" />, x: 150, y: -150, delay: 1.2 },
+  { icon: <FaNodeJs className="text-green-600" />, x: -60, y: 220, delay: 0.8 },
+];
 
 const Home = () => {
   return (
     <section
       id="home"
-      className="h-screen flex flex-col items-center justify-end text-center bg-oklch(0.97 0 0) dark:bg-gray-900 pb-4 px-4"
+      className="relative h-screen flex flex-col items-center justify-end text-center bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-800 dark:to-gray-950 pb-4 px-4 overflow-hidden"
     >
-      <div className="flex flex-col md:flex-row items-center justify-center w-full h-full border-emerald-500">
+      {/* Floating Background Icons */}
+      {floatingIcons.map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: item.x, y: item.y, rotate: 0, scale: 0.6 }}
+          animate={{
+            opacity: 0.2,
+            x: item.x + (Math.random() * 40 - 20),
+            y: item.y + (Math.random() * 40 - 20),
+            rotate: Math.random() * 15 - 7.5,
+            scale: 1
+          }}
+          transition={{
+            duration: 4 + Math.random() * 2,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut",
+            delay: item.delay
+          }}
+          className="absolute text-6xl"
+          style={{ top: `50%`, left: `50%`, transform: "translate(-50%, -50%)" }}
+        >
+          {item.icon}
+        </motion.div>
+      ))}
+
+      <div className="flex flex-col md:flex-row items-center justify-center w-full h-full">
         {/* Profile Picture */}
-        <motion.img
-          src={profilePic}
-          alt="Profile"
+        <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="w-48 sm:w-56 md:w-64 lg:w-80 h-auto rounded-full mb-6 md:mb-0 object-cover shadow-lg border-4 border-emerald-500"
-        />
+          className="relative group mb-6 md:mb-0"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+          <img
+            src={profilePic}
+            alt="Profile"
+            className="relative w-48 sm:w-56 md:w-64 lg:w-64 h-auto rounded-full object-cover shadow-lg border-4 border-indigo-500"
+          />
+        </motion.div>
 
         {/* Text Content */}
         <div className="font-serif font-semibold max-w-xl text-center md:text-left md:ml-6">
@@ -27,11 +67,10 @@ const Home = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="text-lg text-gray-700 dark:text-gray-300"
           >
-            Hello, just call me{" "}
-            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-700">
-              Kyle
+            Hello{" "}
+            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">
+            👋
             </span>
-            .
           </motion.p>
 
           <motion.h1
@@ -41,16 +80,16 @@ const Home = () => {
             className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-wide text-gray-800 dark:text-gray-100"
           >
             I'm a{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 underline decoration-teal-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500">
               student
             </span>{" "}
-            enjoying to{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 underline decoration-teal-500">
-              develop
+            learning to develop{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500">
+              web
             </span>{" "}
-            web{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 underline decoration-teal-500">
-              applications
+            and{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500">
+            mobile applications
             </span>
             .
           </motion.h1>
@@ -65,10 +104,9 @@ const Home = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 1 }}
-          className="relative px-6 py-3 text-lg font-extrabold text-white bg-emerald-500 rounded-lg shadow-md hover:shadow-2xl hover:scale-105 transition transform"
+          className="relative px-6 py-3 text-lg font-extrabold text-white bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-md hover:shadow-2xl hover:scale-105 transition transform"
         >
-          {/* Outer Border */}
-          <div className="absolute -top-1 -left-1 w-full h-full border-2 border-green-700 rotate-2 rounded-lg"></div>
+          <div className="absolute -top-1 -left-1 w-full h-full border-2 border-indigo-700 rotate-2 rounded-lg"></div>
           Projects
         </motion.a>
 
@@ -88,7 +126,6 @@ const Home = () => {
               transition={{ duration: 0.3 }}
               className="relative p-3 rounded-full shadow-lg text-2xl sm:text-3xl flex items-center justify-center bg-white dark:bg-gray-800"
             >
-              {/* Outer Border Effect */}
               <div
                 className={`absolute -top-1 -left-1 w-full h-full border-2 ${social.color} rotate-2 rounded-full`}
               ></div>
