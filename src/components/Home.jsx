@@ -43,19 +43,19 @@ const Home = () => {
         </motion.div>
       ))}
 
-      <div className="flex flex-col md:flex-row items-center justify-center w-full h-full">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full h-full px-4">
         {/* Profile Picture */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative group mb-6 md:mb-0"
+          className="relative group flex justify-center items-center w-full md:w-1/3 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
           <img
             src={profilePic}
             alt="Profile"
-            className="relative w-48 sm:w-56 md:w-64 lg:w-64 h-auto rounded-full object-cover shadow-lg border-4 border-indigo-500"
+            className="relative w-full h-auto rounded-full object-cover shadow-lg border-4 border-indigo-500"
           />
         </motion.div>
 
