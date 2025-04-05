@@ -11,6 +11,22 @@ const floatingIcons = [
   { icon: <FaNodeJs className="text-green-600" />, x: -60, y: 220, delay: 0.8 },
 ];
 
+// Lightning effect animation variants
+const lightningVariant = {
+  hidden: { opacity: 0, scale: 0.8, rotate: -10 },
+  visible: {
+    opacity: [0.5, 1, 0.5],
+    scale: [1, 1.2, 1],
+    rotate: [0, 5, -5, 0],
+    transition: {
+      duration: 0.6,
+      ease: "easeInOut",
+      repeat: Infinity,
+      repeatType: "mirror",
+    },
+  },
+};
+
 const Home = () => {
   return (
     <section
@@ -27,14 +43,14 @@ const Home = () => {
             x: item.x + (Math.random() * 40 - 20),
             y: item.y + (Math.random() * 40 - 20),
             rotate: Math.random() * 15 - 7.5,
-            scale: 1
+            scale: 1,
           }}
           transition={{
             duration: 4 + Math.random() * 2,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut",
-            delay: item.delay
+            delay: item.delay,
           }}
           className="absolute text-6xl"
           style={{ top: `50%`, left: `50%`, transform: "translate(-50%, -50%)" }}
@@ -67,7 +83,7 @@ const Home = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="text-lg text-gray-700 dark:text-gray-300"
           >
-            Hello{" "}
+            Hello Sir/Ma'am{" "}
             <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">
               👋
             </span>
@@ -77,19 +93,26 @@ const Home = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide text-gray-800 dark:text-gray-100"
+            className="mt-10 text-1xl sm:text-1xl md:text-3xl font-extrabold tracking-wider text-gray-800 dark:text-gray-100"
           >
-            I'm a{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500">
-              student
+            I'm{" "}
+            <span
+              className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500
+              hover:scale-105 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-500 hover:via-indigo-600 hover:to-purple-600 transition-all duration-300"
+            >
+              KYLE CERVANTES
             </span>{" "}
-            learning to develop{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500">
-              web
+            a Filipino based in the{" "}
+            <span
+              className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500"
+            >
+              Philippines,
             </span>{" "}
-            and{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500">
-              mobile applications
+            willing to create both{" "}
+            <span
+              className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 underline decoration-indigo-500"
+            >
+              web and mobile developments
             </span>
             .
           </motion.h1>
@@ -104,14 +127,14 @@ const Home = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 1 }}
-          className="relative px-6 py-3 text-lg font-extrabold text-white bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-md hover:shadow-2xl hover:scale-105 transition transform"
+          className="relative px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
         >
           <div className="absolute -top-1 -left-1 w-full h-full border-2 border-indigo-700 rotate-2 rounded-lg"></div>
-          Projects
+          View Projects
         </motion.a>
 
         {/* Social Media Icons */}
-        <div className="flex gap-4">
+        <div className="flex gap-6 mt-6 md:mt-0">
           {[
             { href: "https://www.facebook.com/share/15t6Eai5Rd/", icon: <FaFacebook />, color: "border-blue-600" },
             { href: "https://github.com/Kyleeestone/", icon: <FaGithub />, color: "border-gray-700" },
@@ -124,7 +147,11 @@ const Home = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.3 }}
-              className="relative p-3 rounded-full shadow-lg text-2xl sm:text-3xl flex items-center justify-center bg-white dark:bg-gray-800"
+              variants={lightningVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="relative p-4 rounded-full shadow-xl text-2xl sm:text-3xl flex items-center justify-center bg-white dark:bg-gray-800"
             >
               <div
                 className={`absolute -top-1 -left-1 w-full h-full border-2 ${social.color} rotate-2 rounded-full`}
