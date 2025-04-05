@@ -35,9 +35,26 @@ const floatingElements = [
   { class: "bottom-20 right-40 w-24 h-24 bg-purple-500", delay: 0.5 },
 ];
 
+// Lightning-like animation variants
+const lightningVariant = {
+  hidden: { opacity: 0, scale: 0.8, rotate: -15 },
+  visible: {
+    opacity: 1,
+    scale: [0.8, 1.2, 1],
+    rotate: [0, 10, -5, 0],
+    transition: {
+      duration: 0.6,
+      ease: "easeInOut",
+    },
+  },
+};
+
 const Projects = () => {
   return (
-    <section id="projects" className="relative p-10 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white overflow-hidden">
+    <section
+      id="projects"
+      className="relative p-10 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white overflow-hidden"
+    >
       {/* Floating Background Elements */}
       {floatingElements.map((el, index) => (
         <motion.div
@@ -57,9 +74,7 @@ const Projects = () => {
           transition={{ duration: 1 }}
           className="mb-8 text-left"
         >
-          <h2 className="inline-block px-6 py-2 rounded-lg bg-indigo-600 text-white mb-4">
-            Projects
-          </h2>
+          <h2 className="inline-block px-6 py-2 rounded-lg bg-indigo-600 text-white mb-4">Projects</h2>
           <p className="text-4xl sm:text-5xl font-extrabold leading-tight">Some of My Best Work</p>
           <motion.div
             initial={{ width: 0 }}
@@ -95,7 +110,7 @@ const Projects = () => {
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{project.title}</h3>
                   <p className="mt-2 text-gray-700 dark:text-gray-300">{project.description}</p>
 
-                  {/* Social Icons */}
+                  {/* Social Icons with lightning effect */}
                   <div className="mt-5 flex justify-center items-center space-x-6">
                     {[{ href: project.githubUrl, icon: faGithub }, { href: project.websiteUrl, icon: faGlobe }].map(
                       (social, idx) => (
@@ -105,16 +120,19 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="relative p-3 rounded-full bg-white dark:bg-gray-700 shadow-lg text-2xl flex items-center justify-center transition-transform hover:scale-110"
-                          whileHover={{ rotate: 5 }}
+                          variants={lightningVariant}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true }}
                         >
-                          {/* Outer Border Effect */}
+                          {/* Lightning Glow Ring */}
                           <motion.div
-                            className="absolute inset-0 border-2 border-indigo-500 rounded-full transform rotate-3"
-                            initial={{ rotate: 0 }}
-                            whileHover={{ rotate: 6 }}
-                            transition={{ duration: 0.3 }}
+                            className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 opacity-30 blur-sm"
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: [0.9, 1.2, 1], opacity: [0, 0.6, 0.3] }}
+                            transition={{ duration: 0.6, ease: "easeInOut" }}
                           />
-                          <FontAwesomeIcon icon={social.icon} className="text-gray-800 dark:text-white" />
+                          <FontAwesomeIcon icon={social.icon} className="text-gray-800 dark:text-white z-10" />
                         </motion.a>
                       )
                     )}
