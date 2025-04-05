@@ -104,10 +104,10 @@ const About = () => {
             </div>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700 dark:text-gray-300">
               <li><strong>First Name:</strong> Kyle</li>
-              <li><strong>Nationality:</strong> Filipino</li>
               <li><strong>Middle Name:</strong> Sampiano</li>
-              <li><strong>Age:</strong> 21</li>
               <li><strong>Last Name:</strong> Cervantes</li>
+              <li><strong>Age:</strong> 21</li>
+              <li><strong>Nationality:</strong> Filipino</li>
               <li><strong>Freelance:</strong> Available</li>
               <li><strong>Languages:</strong> Filipino, English</li>
             </ul>
