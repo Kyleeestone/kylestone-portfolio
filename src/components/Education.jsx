@@ -16,14 +16,14 @@ const educationData = [
     degree: "Bachelor of Science in Computer Science",
     school: "North Eastern Mindanao State University - Lianga Campus",
     logo: "/images/lianga.jpg",
-    year: "2024 - Present",
+    year: "2021 - 2025",
     description: "Focused on software development, algorithms, and modern web technologies.",
   },
   {
     degree: "Bachelor of Science in Computer Science",
     school: "North Eastern Mindanao State University - Tandag Campus",
     logo: "/images/tandag.png",
-    year: "2022 - 2023",
+    year: "2017 - 2021",
     description: "Gained knowledge in problem-solving, mathematics, and programming.",
   },
   {
