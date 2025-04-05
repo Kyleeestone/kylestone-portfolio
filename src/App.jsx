@@ -7,7 +7,6 @@ import Hobbies from './components/Hobbies';
 import FeaturedProjects from './components/FeaturedProjects';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import Footer from "./components/Footer";
 import './App.css';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -26,7 +25,6 @@ function App() {
           <FeaturedProjects />
           <Projects />
           <Contact />
-          <Footer />
         </div>
       </div>
     </ThemeProvider>
